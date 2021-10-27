@@ -5,8 +5,12 @@ package pages;
  */
 
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
@@ -92,7 +96,8 @@ public class CategoryPage extends BasePage {
      */
     @Step("Ждем пока загрузятся результаты поиска")
     public CategoryPage waitUntilSearchOrFilterEnds(){
-        $x("//article").shouldHave(visible);
+        new WebDriverWait(WebDriverRunner.getWebDriver(), 30)
+                .until(ExpectedConditions.numberOfElementsToBeMoreThan(By.xpath("//article"), 0));
         return page(CategoryPage.class);
     }
 }

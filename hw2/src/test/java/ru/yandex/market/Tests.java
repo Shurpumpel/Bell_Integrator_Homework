@@ -4,23 +4,29 @@ package ru.yandex.market;
  * This class has tests for https://market.yandex.ru/
  */
 
-import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.*;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import pages.CategoryPage;
-import pages.MainCategoryPage;
-import pages.YandexMainPage;
-import pages.YandexMarketMainPage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.CollectionCondition.size;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Selenide.*;
 
 public class Tests extends BaseTest {
@@ -61,6 +67,7 @@ public class Tests extends BaseTest {
     /**
      * set smartphone producer
      * check that all results has name of producer
+     *
      * @param value name of producer
      */
     @Feature("Проверка смартфонов")
@@ -81,7 +88,7 @@ public class Tests extends BaseTest {
             "ZTE"
     })
     public void testSmartphones(String value) {
-        open("https://yandex.ru", YandexMainPage.class)
+        CategoryPage page = open("https://yandex.ru", YandexMainPage.class)
                 .goServiceByName("Маркет", YandexMarketMainPage.class)
                 .openListOfCategories()
                 .goToMainCategory("Электроника", MainCategoryPage.class)
@@ -91,16 +98,15 @@ public class Tests extends BaseTest {
                 .setCountElemsToShow(12)
                 .waitUntilSearchOrFilterEnds();
 
-        SelenideElement buttonNextPage = $x("//a[@class='_2prNU _3OFYT']");
-
+        List<WebElement> buttonNextPage = WebDriverRunner.getWebDriver().findElements(By.xpath("//a[@class='_2prNU _3OFYT']"));
         boolean isAllNamesGood = true;
-        while (isAllNamesGood) {
+        while (isAllNamesGood && !buttonNextPage.isEmpty()) {
             isAllNamesGood = isAllNamesContainsValue(value);
-            try {
-                buttonNextPage.click();
-            }catch (com.codeborne.selenide.ex.ElementNotFound e){
-                break;
-            }
+            Actions actions = new Actions(WebDriverRunner.getWebDriver());
+            actions.moveToElement(buttonNextPage.get(0)).click().perform();
+            page.waitUntilSearchOrFilterEnds();
+            $x("//a[contains(@aria-label,'текущая')]").shouldBe(Condition.visible);
+            buttonNextPage = WebDriverRunner.getWebDriver().findElements(By.xpath("//a[@class='_2prNU _3OFYT']"));
         }
         isAllNamesGood = isAllNamesContainsValue(value);
 
@@ -110,15 +116,19 @@ public class Tests extends BaseTest {
 
     /**
      * This Method allows to check that all names of results on this page contains name of producer
+     *
      * @param value name of producer
      * @return false if anyone not contains
      */
     private boolean isAllNamesContainsValue(String value) {
         boolean result = true;
-        ElementsCollection results = $$x("//article//h3//a");
-        List<String> foundNames = results.stream()
-                .map(x -> x.getAttribute("title"))
-                .collect(Collectors.toList());
+        List<WebElement> results = new ArrayList<>($$x("//article//h3//a//span"));
+
+        List<String> foundNames = new ArrayList<>();
+        for(WebElement element : results){
+            foundNames.add(element.getText());
+        }
+
         for (String name : foundNames) {
             if (!name.contains(value)) {
                 result = false;
