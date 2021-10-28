@@ -98,15 +98,14 @@ public class Tests extends BaseTest {
                 .setCountElemsToShow(12)
                 .waitUntilSearchOrFilterEnds();
 
-        List<WebElement> buttonNextPage = WebDriverRunner.getWebDriver().findElements(By.xpath("//a[@class='_2prNU _3OFYT']"));
+        List<WebElement> buttonNextPage = WebDriverRunner.getWebDriver().findElements(By.xpath("//button[@class='tzQlI _1e9zv']"));
         boolean isAllNamesGood = true;
-        while (isAllNamesGood && !buttonNextPage.isEmpty()) {
-            isAllNamesGood = isAllNamesContainsValue(value);
+        while (!buttonNextPage.isEmpty()) {
+            page.waitUntilSearchOrFilterEnds();
             Actions actions = new Actions(WebDriverRunner.getWebDriver());
             actions.moveToElement(buttonNextPage.get(0)).click().perform();
             page.waitUntilSearchOrFilterEnds();
-            $x("//a[contains(@aria-label,'текущая')]").shouldBe(Condition.visible);
-            buttonNextPage = WebDriverRunner.getWebDriver().findElements(By.xpath("//a[@class='_2prNU _3OFYT']"));
+            buttonNextPage = WebDriverRunner.getWebDriver().findElements(By.xpath("//button[@class='tzQlI _1e9zv']"));
         }
         isAllNamesGood = isAllNamesContainsValue(value);
 
