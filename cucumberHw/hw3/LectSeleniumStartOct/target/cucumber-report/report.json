@@ -1,0 +1,156 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 2955441000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "StepDefinitions.before()"
+            }
+          }
+        ],
+        "line": 4,
+        "name": "тест с видеокартами",
+        "description": "",
+        "id": "тестирование-citilink;тест-с-видеокартами",
+        "after": [
+          {
+            "result": {
+              "duration": 504176000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "StepDefinitions.closeBellTest()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 7022213300,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "открыть сайт \u0027https://www.citilink.ru\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027https://www.citilink.ru\u0027",
+                  "offset": 13
+                }
+              ],
+              "location": "StepDefinitions.openPage(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 629206600,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "открыть категории товаров citilink",
+            "match": {
+              "location": "StepDefinitions.openCitilinkCategories()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 262986300,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "навести на категорию \u0027Ноутбуки и компьютеры\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Ноутбуки и компьютеры\u0027",
+                  "offset": 21
+                }
+              ],
+              "location": "StepDefinitions.hoverOnCategory(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 963819500,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "навести на категорию \u0027Видеокарты\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Видеокарты\u0027",
+                  "offset": 21
+                }
+              ],
+              "location": "StepDefinitions.hoverOnCategory(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 5101646200,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "кликнуть по категории с именем \u0027Видеокарты\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Видеокарты\u0027",
+                  "offset": 31
+                }
+              ],
+              "location": "StepDefinitions.clickOnCategoryWithName(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 7931653900,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "убедиться, что самая дешевая \u0027gtx 1660ti\u0027 дороже самой дешевой \u0027rtx 3060\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027gtx 1660ti\u0027",
+                  "offset": 29
+                },
+                {
+                  "val": "\u0027rtx 3060\u0027",
+                  "offset": 63
+                }
+              ],
+              "location": "StepDefinitions.checkFirstVideoCardMoreExpensive(String,String)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Run"
+          }
+        ]
+      }
+    ],
+    "name": "тестирование citilink",
+    "description": "",
+    "id": "тестирование-citilink",
+    "keyword": "Feature",
+    "uri": "file:src/test/java/features/citilink.feature",
+    "tags": []
+  }
+]

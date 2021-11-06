@@ -1,0 +1,241 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 26717600,
+              "status": "passed"
+            },
+            "match": {
+              "location": "StepDefinition.before()"
+            }
+          }
+        ],
+        "line": 22,
+        "name": "Компьютеры яндекс маркета",
+        "description": "",
+        "id": "test-application;компьютеры-яндекс-маркета;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 6172544800,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "открыть страницу \u0027https://yandex.ru/\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027https://yandex.ru/\u0027",
+                  "offset": 17
+                }
+              ],
+              "location": "StepDefinition.openPage(String)"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 865299600,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "перейти к сервису \u0027Маркет\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Маркет\u0027",
+                  "offset": 18
+                }
+              ],
+              "location": "StepDefinition.goService(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 3540241800,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "открыть список категрий",
+            "match": {
+              "location": "StepDefinition.openCategoriesList()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 4676713800,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "выбрать категорию \u0027Компьютеры\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Компьютеры\u0027",
+                  "offset": 18
+                }
+              ],
+              "location": "StepDefinition.chooseMainCategory(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 9049531100,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "выбрать подкатегорию \u0027Ноутбуки\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u0027Ноутбуки\u0027",
+                  "offset": 21
+                }
+              ],
+              "location": "StepDefinition.chooseCategory(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 2460758800,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "установить цену от \u002710000\u0027 до \u002730000\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u002710000\u0027",
+                  "offset": 19
+                },
+                {
+                  "val": "\u002730000\u0027",
+                  "offset": 30
+                }
+              ],
+              "location": "StepDefinition.setPrice(String,String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 3632687100,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "выбрать производителей:",
+            "match": {
+              "location": "StepDefinition.chooseProducers(String\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "HP"
+                ]
+              },
+              {
+                "cells": [
+                  "Lenovo"
+                ]
+              }
+            ],
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 87088800,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "дождаться загрузки результатов",
+            "match": {
+              "location": "StepDefinition.waitLoading()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 3603825500,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "установить количество отображаемых элементов \u002712\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u002712\u0027",
+                  "offset": 45
+                }
+              ],
+              "location": "StepDefinition.setCountElementsToShow(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 19707400,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "дождаться загрузки результатов",
+            "match": {
+              "location": "StepDefinition.waitLoading()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 29417200,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "проверить, что отобразилось \u002712\u0027",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\u002712\u0027",
+                  "offset": 28
+                }
+              ],
+              "location": "StepDefinition.checkCountElementsVisible(String)"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 5770882600,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "искать через поиск первый элемент и убедиться что он существует",
+            "match": {
+              "location": "StepDefinition.checkSearch()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Run"
+          }
+        ]
+      }
+    ],
+    "name": "Test Application",
+    "description": "",
+    "id": "test-application",
+    "keyword": "Feature",
+    "uri": "file:src/test/java/ru/yandex/market/features/testApp.feature",
+    "tags": []
+  }
+]
